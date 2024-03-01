@@ -40,12 +40,5 @@ We value feedback from our users and strive to continuously improve BorrowBridge
 
 BorrowBridge is licensed under the [MIT License](LICENSE).
 
-## 🔗 Stay Connected
-
-Stay connected with BorrowBridge to receive updates, announcements, and insights:
-
-- Follow us on [Twitter](https://twitter.com/borrowbridge)
-- Like us on [Facebook](https://www.facebook.com/borrowbridge)
-- Join our [Community Forum](https://forum.borrowbridge.com)
 
 Thank you for choosing BorrowBridge to support small businesses and invest in the future of communities around the world. Together, we can make a difference.
