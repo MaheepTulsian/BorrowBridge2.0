@@ -13,6 +13,7 @@ import InvestorDashboard from './pages/InvestorDashboard/InvestorDashboard.jsx';
 import Marketplace from './pages/InvestorDashboard/DashboardItem/Marketplace.jsx';
 import Investments from './pages/InvestorDashboard/DashboardItem/Investments.jsx';
 import InvestmentCard from './components/InvestorItems/InvestmentCard.jsx';
+import PitchDetails from './components/InvestorItems/PitchDetails.jsx';
 import LandingPage from './pages/LandingPage.jsx';
 import Land from './components/LandingItems/Land.jsx';
 import './index.css';
@@ -24,7 +25,9 @@ const router= createBrowserRouter(
         <Route path="/InvestorDashboard" element={<InvestorDashboard />} >
           <Route path="/InvestorDashboard/" element={<Profile />} />
           <Route path="/InvestorDashboard/Profile" element={<Profile />} />
-          <Route path="/InvestorDashboard/Marketplace" element={<Marketplace />} />
+          <Route path="/InvestorDashboard/Marketplace" element={<Marketplace />} >
+            <Route path="/InvestorDashboard/Marketplace/id" element={<PitchDetails />} />
+          </Route>
           <Route path="/InvestorDashboard/Investments" element={<Investments />} >
             <Route path="/InvestorDashboard/Investments/" element={<InvestmentCard />} />
             <Route path="/InvestorDashboard/Investments/All" element={<InvestmentCard />} />
