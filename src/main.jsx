@@ -25,9 +25,9 @@ const router= createBrowserRouter(
         <Route path="/InvestorDashboard" element={<InvestorDashboard />} >
           <Route path="/InvestorDashboard/" element={<Profile />} />
           <Route path="/InvestorDashboard/Profile" element={<Profile />} />
-          <Route path="/InvestorDashboard/Marketplace" element={<Marketplace />} >
-            <Route path="/InvestorDashboard/Marketplace/id" element={<PitchDetails />} />
-          </Route>
+          <Route path="/InvestorDashboard/Marketplace" element={<Marketplace />} />
+          <Route path="/InvestorDashboard/Marketplace/:id" element={<PitchDetails />} />
+          
           <Route path="/InvestorDashboard/Investments" element={<Investments />} >
             <Route path="/InvestorDashboard/Investments/" element={<InvestmentCard />} />
             <Route path="/InvestorDashboard/Investments/All" element={<InvestmentCard />} />

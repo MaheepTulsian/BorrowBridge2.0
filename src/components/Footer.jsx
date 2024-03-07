@@ -4,40 +4,24 @@ const Footer = () => {
   return (
     <>
     <footer className="w-full bg-[#121c24] border-t-2 text-center text-neutral-200 p-6 md:text-left">
-      <div className="md:flex md:justify-between md:items-center">
+      <div className="md:flex md:justify-evenly md:items-center">
         <div className="flex justify-center mb-6 md:mb-0">
-          <span className="text-2xl font-bold">Your Brand</span>
+          <img
+            className="h-8 w-auto"
+            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+            alt="Your Company"
+          />
         </div>
-
-        <div className="md:w-2/5">
-          <h6 className="text-lg font-semibold">Contact Us</h6>
-          <p className="py-2 text-sm">
-            New York, NY 10012, US
-          </p>
-          <p className="py-2 text-sm">
-            <a href="mailto:info@example.com" className="text-neutral-200 hover:text-neutral-400">
-              info@example.com
-            </a>
-          </p>
-          <p className="py-2 text-sm">
-            <a href="tel:+0123456788" className="text-neutral-200 hover:text-neutral-400">
-              + 01 234 567 88
-            </a>
-          </p>
-          <p className="py-2 text-sm">
-            <a href="tel:+0123456789" className="text-neutral-200 hover:text-neutral-400">
-              + 01 234 567 89
-            </a>
-          </p>
+        <div className="mt-6 mb-6 text-sm text-neutral-400 flex flex-col gap-2">
+          <a href="#" className='hover:text-[#8a9ebf] hover:underline'>About Us</a>
+          <a href="#" className='hover:text-[#8a9ebf] hover:underline'>Services</a>
+          <a href="#" className='hover:text-[#8a9ebf] hover:underline'>Contact Us</a>
         </div>
-      </div>
-
-      <div className="mt-6 mb-6 text-sm text-neutral-400">
-        Copyright &copy; {new Date().getFullYear()} Your Brand. All rights reserved.
-      </div>
-
-      <div className="flex justify-center">
-        {/* Add your desired social media icons here */}
+        <div className="mt-6 mb-6 text-sm text-neutral-400 flex flex-col gap-2">
+          <a href="#" className='hover:text-[#8a9ebf] hover:underline'>Terms of use</a>
+          <a href="#" className='hover:text-[#8a9ebf] hover:underline'>Privacy Policy</a>
+          <a href="#" className='hover:text-[#8a9ebf] hover:underline'>Help center</a>
+        </div>
       </div>
     </footer>
     </>
@@ -45,4 +29,3 @@ const Footer = () => {
 }
 
 export default Footer
-    

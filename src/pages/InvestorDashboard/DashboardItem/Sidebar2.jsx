@@ -36,9 +36,9 @@ const Sidebar2 = () => {
           </Link>
         </div>
 
-        <div className='w-5/6 h-10 rounded-lg flex items-center justify-center bg-[#f5c754]'>
-          <button className='text-black text-lg font-bold'>Connect Wallet</button>
-        </div>
+        <button className='w-5/6 h-10 rounded-lg flex items-center justify-center bg-[#f5c754]'>
+          <p className='text-black text-lg font-bold'>Connect Wallet</p>
+        </button>
       </div>
   )
 }
