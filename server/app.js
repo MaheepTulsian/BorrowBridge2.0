@@ -1,5 +1,9 @@
 import express from "express";
+import cors from "cors";
+
 const app = express();
+app.use(cors());
+
 const port = process.env.PORT || 3000;
 import investor from "./routes/investor.js";
 import requestor from "./routes/requestor.js";
