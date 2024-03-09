@@ -24,11 +24,28 @@ const List = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
+    try {
+      const response = await fetch('http://localhost:3000/requestor/add/formdata', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+      
+      // Handle successful form submission
+      console.log('Form submitted successfully');
+    } catch (error) {
+      console.error('Error submitting form:', error.message);
+    }
   };
+  
 
   return (
     <form onSubmit={handleSubmit} className="mt-10 pl-40 pb-10 h-full w-3/4 flex flex-col gap-3">
@@ -82,9 +99,9 @@ const List = () => {
           <label htmlFor="offeringPrice" className='ml-1 text-[#8a9ebf] text-lg'>Offering Price</label>
           <input type="text"  placeholder='Enter the offering price' className='bg-[#29384d] py-2 pl-2 rounded-xl text-[#8a9ebf]'/>
         </div>
-        <div className='w-3/6 h-10 rounded-lg flex items-center justify-center bg-[#f5c754]'>
-          <button className='text-black text-lg font-bold'>Submit</button>
-        </div>
+        <button className='w-3/6 h-10 rounded-lg flex items-center justify-center bg-[#f5c754]' onClick={handleSubmit}>
+          <p className='text-black text-lg font-bold'>Submit</p>
+        </button>
     </form>
   )
 }
