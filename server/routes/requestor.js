@@ -1,14 +1,22 @@
 import express from "express";
 import Requestor from "../database/requestor_schema.js";
 import connectingDatabase from "../database/connect.js";
-const router = express.Router();
 import bodyParser from "body-parser";
+import multer from "multer";
 
-router.use(bodyParser.urlencoded({ extended: true }));
+const router = express.Router();
+const jsonParser = bodyParser.json();
+const urlencodedParser = bodyParser.urlencoded({ extended: true });
+const upload = multer(); // For handling form-data
+
+router.use(jsonParser);
+router.use(urlencodedParser);
+
 router.get("/test", (req, res) => {
   res.send("routes running");
 });
-router.post("/add/formdata", async (req, res) => {
+
+router.post("/add/formdata", upload.none(), async (req, res) => {
   try {
     const user = new Requestor(req.body);
     await user
