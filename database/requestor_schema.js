@@ -42,7 +42,7 @@ const business  = new mongoose.Schema({
           }
 });
 
-const registerSchema = new mongoose.Schema({
+const requestorSchema = new mongoose.Schema({
 
           firstName: {
                type: String,
@@ -63,5 +63,5 @@ const registerSchema = new mongoose.Schema({
           businessList:[business]
 });
 
-const Register = mongoose.model('Register', registerSchema);
-export default Register;
+const Requestor = mongoose.model('Register', requestorSchema);
+export default Requestor;
