@@ -1,0 +1,16 @@
+{
+  "type":"module",
+  "dependencies": {
+    "mongoose": "^8.2.1"
+  },
+  "name": "borrowbridge2.0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
