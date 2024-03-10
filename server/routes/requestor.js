@@ -32,6 +32,21 @@ router.post("/add/formdata", upload.none(), async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+//get api for requestor page
 
-await connectingDatabase();
+router.get("/requestor_details", async (req, res) => {
+  try {
+    const requestor_details = await Requestor.find();
+    if (requestor_details.length === 0) {
+      return res
+        .status(400)
+        .json({ message: "Cannot find the requestor detail" });
+    }
+    res.status(200).json(requestor_details);
+  } catch (error) {
+    console.log("Error in fetching the data ", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 export default router;
