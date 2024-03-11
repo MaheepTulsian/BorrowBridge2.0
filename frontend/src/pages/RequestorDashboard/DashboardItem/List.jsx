@@ -6,10 +6,6 @@ const List = () => {
   
   const formik = useFormik({
     initialValues: {
-      firstName:'',
-      lastName:'',
-      email:'',
-      phoneNumber:'',
       companyName: '',
       companyWebsite: '',
       companyDescription: '',
@@ -26,11 +22,7 @@ const List = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            firstName: values.firstName,
-            lastName: values.lastName,
-            email: values.email,
             companyName: values.companyName,
-            phoneNo: values.phoneNumber,
             website: values.companyWebsite,
             imageUrl: values.image,
             about: values.companyDescription,
@@ -56,22 +48,6 @@ const List = () => {
     <form onSubmit={formik.handleSubmit} className="mt-10 pl-40 pb-10 h-full w-3/4 flex flex-col gap-3">
       <h1 className='text-white text-3xl font-bold'>Business Profile</h1>
       <h3 className='text-[#8a9ebf] text-lg font-semibold'>Complete your profile to increase your trustworthiness and attract more investors.</h3>
-        <div className='w-3/6 flex flex-col gap-2'>
-          <label htmlFor="firstName" className='ml-1 text-[#8a9ebf] text-lg'>First name</label>
-          <input type="text" id="firstName" name="firstName" value={formik.values.firstName} onChange={formik.handleChange} placeholder='Enter your first name' className='bg-[#29384d] py-2 pl-2 rounded-xl text-[#8a9ebf]' />
-        </div>
-        <div className='w-3/6 flex flex-col gap-2'>
-          <label htmlFor="lastName" className='ml-1 text-[#8a9ebf] text-lg'>Last name</label>
-          <input type="text" id="lastName" name="lastName" value={formik.values.lastName} onChange={formik.handleChange} placeholder='Enter your last name' className='bg-[#29384d] py-2 pl-2 rounded-xl text-[#8a9ebf]'/>
-        </div>
-        <div className='w-3/6 flex flex-col gap-2'>
-          <label htmlFor="email" className='ml-1 text-[#8a9ebf] text-lg'>E-mail</label>
-          <input type="text" id="email" name="email" value={formik.values.email} onChange={formik.handleChange} placeholder='Enter your E-mail address' className='bg-[#29384d] py-2 pl-2 rounded-xl text-[#8a9ebf]'/>
-        </div>
-        <div className='w-3/6 flex flex-col gap-2'>
-          <label htmlFor="phoneNumber" className='ml-1 text-[#8a9ebf] text-lg'>Phone number</label>
-          <input type="text" id="phoneNumber" name="phoneNumber" value={formik.values.phoneNumber} onChange={formik.handleChange} placeholder='Enter your phone number' className='bg-[#29384d] py-2 pl-2 rounded-xl text-[#8a9ebf]'/>
-        </div>
         <div className='w-3/6 flex flex-col gap-2'>
           <label htmlFor="companyName" className='ml-1 text-[#8a9ebf] text-lg'>Company name</label>
           <input type="text" id="companyName" name="companyName" value={formik.values.companyName} onChange={formik.handleChange} placeholder='Enter your company name' className='bg-[#29384d] py-2 pl-2 rounded-xl text-[#8a9ebf]'/>
