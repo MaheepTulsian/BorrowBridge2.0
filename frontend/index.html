@@ -1,13 +1,53 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="./src/assets/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BorrowBridge</title>
+
+  <style>
+    .logo {
+      width: 400px;
+      height: 100px;
+      place-self: center;
+    }
+    .mobile {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      padding: 10px;
+      background-color: #121c24;
+      color: white;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .mobile {
+        display: flex;
+      flex-direction: column;
+      justify-content: center;
+      }
+
+      #root {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <div class="mobile">
+    <img src="./src/assets/logo_mobile.png" alt="logo" class="logo">
+    <p>
+      This Website is only available in Desktop mode
+      as Crypto wallets are not available in Tablet or Mobile view.
+    </p>
+  </div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>
