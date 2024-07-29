@@ -4,8 +4,8 @@ import { Disclosure } from '@headlessui/react'
 import Logo from '../assets/logo.png';
 
 const navigation = [
-  { name: 'Requestor Dashboard', href: '/RequestorDashboard' },
-  { name: 'Investor Dashboard', href: '/InvestorDashboard' },
+  { name: 'Requestor Dashboard', path: '/requestor-dashboard' },
+  { name: 'Investor Dashboard', path: '/investor-dashboard' },
 ]
 
 const Navbar = () => {
@@ -26,7 +26,7 @@ const Navbar = () => {
             {navigation.map((item) => (
               <NavLink
                 key={item.name}
-                to={item.href}
+                to={item.path}
                 className={({ isActive }) =>
                   isActive
                     ? "text-white bg-gray-700 rounded-md px-3 py-2 text-sm font-medium"
