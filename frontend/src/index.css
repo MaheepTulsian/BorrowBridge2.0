@@ -7,6 +7,12 @@
   src: url('./assets/BoogieBoys.ttf') format('truetype');
 }
 
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .bounce-animation {
   font-family: 'CustomFont', sans-serif;
   animation: bounce 0.8s ease-in-out;
