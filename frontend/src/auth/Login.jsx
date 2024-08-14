@@ -1,15 +1,51 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useFormik } from 'formik'
 import { welcome, Logo_mobile } from '../assets/index.js'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { GrLinkNext } from "react-icons/gr";
+import useAuthStore from '../store/AuthStore.js'
 
 function Login() {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
+  const {setUser} = useAuthStore();
+
   const togglePasswordVisibility = () => {
     setPasswordVisible(prevVisible => !prevVisible);
   };
+
+
+  const formik = useFormik({
+    initialValues: {
+      username: '',
+      password: ''
+    },
+    onSubmit: async (values) => {
+      try {
+        const response = await fetch('http://localhost:3000/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({
+            username: values.username,
+            password: values.password,
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setUser(data);
+        } else {  
+          const error = await response.json();
+          console.error(error);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  });
 
   return (
     <div className='h-screen w-full bg-[#121c24] text-white flex'>
@@ -38,7 +74,7 @@ function Login() {
             <h1 className='text-3xl font-semibold'>Login</h1>
           </div>
           <div className='w-3/4'>
-            <form action="" className='flex-center flex-col gap-4'>
+            <form onSubmit={formik.handleSubmit} className='flex-center flex-col gap-4'>
               <div className='w-full flex flex-col gap-2'>
                 <label htmlFor="username" className='ml-1 text-[#8a9ebf] text-lg font-semibold'>Username</label>
                 <input
@@ -47,6 +83,8 @@ function Login() {
                   name="username"
                   placeholder='Enter your username'
                   required
+                  onChange={formik.handleChange}
+                  value={formik.values.username}
                   className='bg-[#29384d] py-2 pl-2 rounded-xl text-[#8a9ebf]'
                 />
               </div>
@@ -60,6 +98,8 @@ function Login() {
                     name="password"
                     placeholder="Enter your Password"
                     required
+                    onChange={formik.handleChange}
+                    value={formik.values.password}
                     className="bg-[#29384d] py-2 pl-2 pr-12 rounded-xl text-[#8a9ebf] w-full"
                   />
                   <button
