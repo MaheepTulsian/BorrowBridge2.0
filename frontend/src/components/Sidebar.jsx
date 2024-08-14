@@ -1,44 +1,54 @@
 import React from 'react'
-import { HomeIcon, UserCircleIcon, PlusIcon, ArrowTrendingUpIcon, ReceiptRefundIcon } from '@heroicons/react/24/outline'
-import { useLocation, Link } from 'react-router-dom'
+import { PlusIcon, ArrowTrendingUpIcon, GlobeAltIcon , CurrencyDollarIcon, ArrowLeftEndOnRectangleIcon } from '@heroicons/react/24/outline'
+import { NavLink } from 'react-router-dom'
 import useAuthStore from '../store/AuthStore.js'
 
 const Sidebar = () => {
-    const { user } = useAuthStore();
-    const { pathname } = useLocation();
-    const subpage = pathname.split("/RequestorDashboard/")?.[1];
-    console.log(subpage);
-    function Linkness(type) {
-        let classes = "w-5/6 h-10 rounded-lg flex items-center justify-start hover:bg-[#29384d]";
-        if (type === subpage) {
-            classes += " bg-[#29384d]";
-        }
-        return classes;
-    }
+    const { user, setUser } = useAuthStore();
+    
+
+    const handleLogout = async () => {
+        fetch('http://localhost:3000/api/auth/logout', {
+            method: 'GET',
+            credentials: 'include'
+        }).then(() => {
+            if (response.ok) {
+                setUser(null);
+                toast.success('Logged out successfully');
+            } else {
+                toast.error('Failed to logout');
+                throw new Error('Failed to logout. Status: ' + response.status);
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    };
 
     return (
         <div className="w-1/4 py-10 pl-10 border-r-2 flex flex-col items-start justify-between gap-3">
             <div className="w-full flex flex-col items-start gap-3">
 
-                <div className="w-5/6 h-10 font-bold rounded-lg flex items-center justify-start">
-                    <p className='ml-3 text-white text-sm lg:text-lg'>Welcome, { user.user.username } </p>
-                </div>
-                <Link to="../RequestorDashboard/List" className={Linkness("List")}>
+                <NavLink to="./create-campaign" className={({ isActive }) => isActive ? 'w-5/6 h-10 rounded-lg flex items-center justify-start bg-[#29384d]' : 'w-5/6 h-10 rounded-lg flex items-center justify-start hover:bg-[#29384d]'}>
                     <PlusIcon className='ml-2 text-white h-6 w-auto' />
-                    <p className='ml-3 text-white text-sm lg:text-lg'>List your Business</p>
-                </Link>
-                <Link to="../RequestorDashboard/Progress" className={Linkness("Progress")}>
+                    <p className='ml-3 text-white text-sm lg:text-lg'>Create Campaign</p>
+                </NavLink>
+                <NavLink to="/Marketplace" className={({ isActive }) => isActive ? 'w-5/6 h-10 rounded-lg flex items-center justify-start bg-[#29384d]' : 'w-5/6 h-10 rounded-lg flex items-center justify-start hover:bg-[#29384d]'}>
+                    <GlobeAltIcon className='ml-2 text-white h-6 w-auto' />
+                    <p className='ml-3 text-white text-sm lg:text-lg'>All Campaigns</p>
+                </NavLink>
+                <NavLink to="/Progress" className={({ isActive }) => isActive ? 'w-5/6 h-10 rounded-lg flex items-center justify-start bg-[#29384d]' : 'w-5/6 h-10 rounded-lg flex items-center justify-start hover:bg-[#29384d]'}>
                     <ArrowTrendingUpIcon className='ml-2 text-white h-6 w-auto' />
                     <p className='ml-3 text-white text-sm lg:text-lg'>Funding Progress</p>
-                </Link>
-                <Link to="../RequestorDashboard/BuyBack" className={Linkness("BuyBack")}>
-                    <ReceiptRefundIcon className='ml-2 text-white h-6 w-auto' />
-                    <p className='ml-3 text-white text-sm lg:text-lg'>Buy-Back</p>
-                </Link>
+                </NavLink>
+                <NavLink to="/Investments" className={({ isActive }) => isActive ? 'w-5/6 h-10 rounded-lg flex items-center justify-start bg-[#29384d]' : 'w-5/6 h-10 rounded-lg flex items-center justify-start hover:bg-[#29384d]'}>
+                    <CurrencyDollarIcon className='ml-2 text-white h-6 w-auto' />
+                    <p className='ml-3 text-white text-sm lg:text-lg'> Donations</p>
+                </NavLink>
             </div>
 
-            <button className='w-5/6 h-10 rounded-lg flex items-center justify-center bg-[#f5c754]'>
-                <p className='text-black text-lg font-bold'>Connect Wallet</p>
+            <button onClick={handleLogout} className='w-5/6 h-10 rounded-lg font-bold flex items-center justify-center bg-red-500'> {/*  [#f5c754] */}
+                <ArrowLeftEndOnRectangleIcon className=' text-black h-6 w-auto' />
+                <p className='ml-3 text-black text-sm'>Logout</p>
             </button>
         </div>
     )

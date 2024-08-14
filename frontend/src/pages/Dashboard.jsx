@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import useAuthStore from '../store/AuthStore.js'
 import Login from '../auth/Login.jsx'
 import { Navbar, Footer, Sidebar } from '../components/index.js'
+import { Outlet } from 'react-router-dom';
 
 function RequestorDashboard() {
 
@@ -46,7 +47,7 @@ function RequestorDashboard() {
           <div className="flex-1 flex bg-[#121c24] text-white border-y-2">
             <Sidebar />
             <div className="flex-1">
-              requestor dashboard {user.user.username}
+              <Outlet />
             </div>
           </div>
         </div>

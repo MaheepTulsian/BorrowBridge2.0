@@ -1,4 +1,5 @@
 import LandingPage from "./LandingPage";
-import Dashboard from "./Dashboard"; 
+import Dashboard from "./Dashboard";
+import CreateCampaign from "./CreateCampaign";
 
-export { LandingPage, Dashboard };
+export { LandingPage, Dashboard, CreateCampaign };
