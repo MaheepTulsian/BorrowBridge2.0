@@ -4,7 +4,7 @@ import './index.css'
 import Layout from './layout.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 
-import { LandingPage, RequestorDashboard, InvestorDashboard } from './pages/index.js'
+import { LandingPage, Dashboard } from './pages/index.js'
 import { Login, Signup } from './auth/index.js'
 
 import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react'
@@ -14,8 +14,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="" element={<Layout />} >
       <Route path="" element={<LandingPage />} />
-      <Route path="requestor-dashboard" element={<RequestorDashboard />} />
-      <Route path="investor-dashboard" element={<InvestorDashboard />} />
+      <Route path="dashboard" element={<Dashboard />} />
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup />} />
     </Route>

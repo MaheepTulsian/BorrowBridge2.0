@@ -4,11 +4,6 @@ import { Disclosure } from '@headlessui/react';
 import Logo from '../assets/logo.png';
 import { useStateContext } from '../context/index';
 
-const navigation = [
-  { name: 'Requestor Dashboard', path: '/requestor-dashboard' },
-  { name: 'Investor Dashboard', path: '/investor-dashboard' },
-];
-
 const Navbar = () => {
   const { connect, address } = useStateContext();
 
@@ -33,19 +28,19 @@ const Navbar = () => {
             <h1 className="mt-3 bounce-animation">BorrowBridge</h1>
           </Link>
           <div className="hidden sm:flex items-center space-x-4 ml-4">
-            {navigation.map((item) => (
+            
               <NavLink
-                key={item.name}
-                to={item.path}
+                key='dashboard'
+                to='/dashboard'
                 className={({ isActive }) =>
                   isActive
                     ? 'text-white bg-gray-700 rounded-md px-3 py-2 text-sm font-medium'
                     : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'
                 }
               >
-                {item.name}
+                Dashboard
               </NavLink>
-            ))}
+            
             <button
               type="button"
               className={buttonClasses}

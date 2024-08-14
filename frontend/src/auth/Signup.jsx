@@ -41,7 +41,7 @@ function Signup() {
           const data = await response.json();
           setUser(data);
           toast.success('Signup Successful');
-          toast.success('Login to continue');
+          window.location.href = '/dashboard';
         } else {
           const error = await response.json();
           console.error(error.error);

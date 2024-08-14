@@ -1,5 +1,4 @@
 import LandingPage from "./LandingPage";
-import RequestorDashboard from "./RequestorDashboard/RequestorDashboard";
-import InvestorDashboard from "./InvestorDashboard/InvestorDashboard";  
+import Dashboard from "./Dashboard"; 
 
-export { LandingPage, RequestorDashboard, InvestorDashboard };
+export { LandingPage, Dashboard };
