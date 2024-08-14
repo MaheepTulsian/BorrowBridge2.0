@@ -4,8 +4,11 @@ import './index.css'
 import Layout from './layout.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 
-import { LandingPage, RequestorDashboard, InvestorDashboard  } from './pages/index.js'
-import {Login, Signup} from './auth/index.js'
+import { LandingPage, RequestorDashboard, InvestorDashboard } from './pages/index.js'
+import { Login, Signup } from './auth/index.js'
+
+import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react'
+import { StateContextProvider } from './context/index.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +24,10 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />  
+    <ThirdwebProvider ChainId={84532}> {/* 84532 is the chainId of the Thirdweb network */}
+      <StateContextProvider>
+        <RouterProvider router={router} />
+      </StateContextProvider>
+    </ThirdwebProvider>
   </React.StrictMode>,
 )

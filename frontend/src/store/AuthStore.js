@@ -1,4 +1,3 @@
-import { redirect } from 'react-router-dom';
 import { create } from 'zustand';
 
 const useAuthStore = create((set) => ({
