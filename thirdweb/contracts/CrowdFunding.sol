@@ -27,9 +27,8 @@ contract CrowdFunding {
         string memory _image
     ) public returns (uint256) {
         Campaign storage campaign = campaigns[numberOfCampaigns];
-        
-        //is everything ok?
-        require(campaign.deadline < block.timestamp, "Deadline must be in the future");
+
+        require(campaign.deadline < block.timestamp, "The deadline should be a date in the future");
 
         campaign.owner = _owner;
         campaign.title = _title;
@@ -52,10 +51,10 @@ contract CrowdFunding {
         campaign.donators.push(msg.sender);
         campaign.donations.push(amount);
 
-        (bool sent, ) = payable(campaign.owner).call{value: amount}("");
+        (bool sent,) = payable(campaign.owner).call{value: amount}("");
 
-        if (sent) {
-            campaign.amountCollected += amount;
+        if(sent) {
+            campaign.amountCollected = campaign.amountCollected + amount;
         }
     }
 
@@ -68,6 +67,7 @@ contract CrowdFunding {
 
         for (uint i = 0; i < numberOfCampaigns; i++) {
             Campaign storage item = campaigns[i];
+
             allCampaigns[i] = item;
         }
 
