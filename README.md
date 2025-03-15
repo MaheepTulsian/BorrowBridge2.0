@@ -7,6 +7,13 @@ To refine the concept, the platform was simplified into a transparent, blockchai
 This project is built with **Solidity** for smart contracts, deployed via **Thirdweb**, and uses **React** and **Tailwind CSS** for the front end.
 
 ---
+## UI
+
+![image](https://github.com/user-attachments/assets/4f4b3c34-4670-4ceb-a98a-c28c7bc24fa0)
+
+![image](https://github.com/user-attachments/assets/feb2de3c-8f9f-4d55-a86e-4c4e325a359e)
+
+---
 
 ## System Design Overview
 
